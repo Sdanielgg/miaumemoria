@@ -14,16 +14,39 @@
             </tbody>
         </table>
     </div>
-    
+    <div id="winMessage">
+        <span>Ganhaste! Foi so preciso falhares 3 vezes...</span>
+        <button id="close">Close</button>
+    </div>
+    <div>
+        <button id="restart">Restart</button>
+    </div>
 </body>
 <style>
+    
     body{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
         background-image:url("https://www.shutterstock.com/image-vector/cute-cartoon-cat-vector-icons-600nw-524942290.jpg");
         height: 100%;
         overflow: hidden;
         margin: 0;
         height: 100vh;
         font-family: Comic Sans ms;
+    }
+    #winMessage{
+        display: none;
+        position: fixed;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 40vh;
+        top: 18%;
+        color: green;
+        background-color: white;
+        font-size: 5vh;
     }
     #title{
         text-align: center;
@@ -42,6 +65,18 @@
         margin: 10px;
         
     }
+    button{
+        width: 15vh;
+        height: 5vh;
+        border: 2px solid black;
+        border-radius: 5px;
+        margin-top:5vh ;
+        background-color: white;
+        font-size: 3vh;
+    }
+    button:hover{
+        background-color: grey;
+    }
     @media (max-width: 600px) {
     table, td {
         display: flex;
@@ -58,6 +93,23 @@
         height: 100px;
         margin: 5px;
         border-radius: 3px;
+    }
+    #winMessage{
+        display: flex;
+        position: fixed;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        height: 40vh;
+        top: 18%;
+        color: green;
+        background-color: white;
+        font-size: 5vh;
+    }
+    button{
+        width: 20vh;
+        height: 7vh;
+
     }
 }
 </style>
