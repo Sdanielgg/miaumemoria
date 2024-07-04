@@ -64,51 +64,54 @@ let restartBtn=document.getElementById("restart")
 restartBtn.addEventListener("click",()=>{
     window.location.reload()
 })
+let lastId=50
 function imgClick(){
     document.querySelectorAll("img").forEach((cell,index)=>{
         setTimeout(()=>{
              if(cell.id!=0){
-                cell.addEventListener("click",()=>{
-            plays+=1
-            console.log("plays:"+plays)
-            if (click==0){
-                click=1
-                cell.src=randomizedArray[index]
-                cellText=cell.src
-                console.log(click)
-            }else if (click==1){
-                cell.src=randomizedArray[index]
-                if(cell.src==cellText){
-                    document.querySelectorAll("img").forEach(cellx=>{
-                        if (cellx.src==cellText){
-                            cellx.style.border=" 2px solid purple"
-                            console.log(cellx)
-                            cellx.id=0
+                cell.addEventListener("click",()=>{ 
+                    console.log("plays:"+plays)
+                    if (click==0){
+                        plays+=1
+                        click=1
+                        cell.src=randomizedArray[index]
+                        cellText=cell.src
+                        console.log(click)
+                        lastId=cell.id
+                    }else if (click==1&& cell.id!=0 && cell.id!=lastId){
+                        plays+=1
+                        cell.src=randomizedArray[index]
+                        if(cell.src==cellText){
+                            document.querySelectorAll("img").forEach(cellx=>{
+                                if (cellx.src==cellText){
+                                    cellx.style.border=" 2px solid purple"
+                                    console.log(cellx)
+                                    cellx.id=0
+                                    click=0
+                                }
+                                setTimeout(()=>{
+                                    console.log("ESPERA");
+            
+                                },500)
+                                })
+                            checkWin()
+                            console.log("checking win")
+                        }else{
                             click=0
-                        }
+                            cell.src=randomizedArray[index]
                         setTimeout(()=>{
-                            console.log("ESPERA");
-    
-                        },500)
-                        })
-                    checkWin()
-                    console.log("checking win")
-                }else{
-                    click=0
-                    cell.src=randomizedArray[index]
-                   setTimeout(()=>{
-                        document.querySelectorAll("img").forEach(cell=>{
-                            if(cell.src==cellText && cell.id!=0){
-                                cell.src="./images/site_icon.jpg"
-                            }})
-                            cell.src="./images/site_icon.jpg" 
-                    },500)
-                    console.log(cell.src)
-                    console.log(click)
-                }
+                                document.querySelectorAll("img").forEach(cell=>{
+                                    if(cell.src==cellText && cell.id!=0){
+                                        cell.src="./images/site_icon.jpg"
+                                    }})
+                                    cell.src="./images/site_icon.jpg" 
+                            },500)
+                            console.log(cell.src)
+                            console.log(click)
+                        }
+                    }
+                })
             }
-        })
-        }
         },500)
     }
     )
