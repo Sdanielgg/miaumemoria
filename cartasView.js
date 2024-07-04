@@ -32,8 +32,10 @@ loadTable()
 let click=0
 let cellText
 let plays=0
+
 document.querySelectorAll("img").forEach((cell,index)=>{
-    if(cell.id!=0){
+    setTimeout(()=>{
+         if(cell.id!=0){
             cell.addEventListener("click",()=>{
         plays+=1
         console.log("plays:"+plays)
@@ -75,6 +77,8 @@ document.querySelectorAll("img").forEach((cell,index)=>{
     })
     }
 
+    },500)
+   
 }
 )
 

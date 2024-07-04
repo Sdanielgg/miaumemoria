@@ -7,7 +7,8 @@
     <link rel="icon" type="image/x-icon" href="./images/site_icon.jpg">
 </head>
 <body>
-    <div>
+    <div id="title"><h1>Miaumoria</h1></div>
+    <div id="game">
         <table>
             <tbody>
             </tbody>
@@ -16,13 +17,29 @@
     
 </body>
 <style>
+    body{
+        background-image:url("https://www.shutterstock.com/image-vector/cute-cartoon-cat-vector-icons-600nw-524942290.jpg");
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+        height: 100vh;
+        font-family: Comic Sans ms;
+    }
+    #title{
+        text-align: center;
+        font-size: 30px;
+    }
+    #game{
+        display: flex;
+        justify-content: center;
+    }
     table{
         display: flex;
-        border: 2px solid black;
     }
     img{
         width: 150px;
         height: 150px;
+        margin: 10px;
         
     }
     @media (max-width: 600px) {
