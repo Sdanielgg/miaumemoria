@@ -1,5 +1,7 @@
 import { Cartas } from "./cartasModel.js";
-let cards=new Cartas(["./images/cards/cat1.jpg","./images/cards/cat1.jpg","./images/cards/cat2.jpg","./images/cards/cat2.jpg","./images/cards/cat3.jpg","./images/cards/cat3.jpg"],"./images/site_icon.jpg")
+let cards=new Cartas(["./images/cards/cat1.jpg","./images/cards/cat1.jpg","./images/cards/cat2.jpg",
+    "./images/cards/cat2.jpg","./images/cards/cat3.jpg",
+    "./images/cards/cat3.jpg","./images/cards/cat4.jpg","./images/cards/cat4.jpg"],"./images/site_icon.jpg")
 let cardList = cards.cartasList.slice(); // Create a copy of the array
 let randomizedArray=[]
 console.log(cardList)
@@ -16,38 +18,37 @@ randomizeCards()
 function loadTable(){
     let tableBody=document.querySelector("tbody")
     let tableRow=document.createElement("tr")
-    for (let i=0;i<cards.cartasList.length;i++){
-        let cell=document.createElement("td")
+    for (let x=0;x<cards.cartasList.length;x++){
         let img=document.createElement("img")
-        cell.id=i+1
+        img.id=x+1
         img.src="./images/site_icon.jpg"
-        cell.appendChild(img)
-        tableRow.appendChild(cell)
+        tableRow.appendChild(img)
+        
     }
     tableBody.appendChild(tableRow)
-}
+ }
+
 loadTable()
 let click=0
 let cellText
 let plays=0
-document.querySelectorAll("td").forEach((cell,index)=>{
+document.querySelectorAll("img").forEach((cell,index)=>{
     if(cell.id!=0){
             cell.addEventListener("click",()=>{
         plays+=1
         console.log("plays:"+plays)
         if (click==0){
             click=1
-            cell.innerHTML=`<img src="${randomizedArray[index]}">`
-            cellText=cell.innerHTML
+            cell.src=randomizedArray[index]
+            cellText=cell.src
             console.log(click)
         }else if (click==1){
-            cell.innerHTML=`<img src="${randomizedArray[index]}">`
-            if(cell.innerHTML==cellText){
-                console.log()
-                console.log(cell.innerHTML)
-                document.querySelectorAll("td").forEach(cellx=>{
-                    if (cellx.innerHTML==cellText){
-                        cellx.style.backgroundColor="purple"
+            cell.src=randomizedArray[index]
+            if(cell.src==cellText){
+                document.querySelectorAll("img").forEach(cellx=>{
+                    if (cellx.src==cellText){
+                        cellx.style.border=" 2px solid purple"
+                        console.log(cellx)
                         cellx.id=0
                         click=0
                     }
@@ -57,15 +58,15 @@ document.querySelectorAll("td").forEach((cell,index)=>{
                 })
             }else{
                 click=0
-                cell.innerHTML=`<img src="${randomizedArray[index]}">`
+                cell.src=randomizedArray[index]
                setTimeout(()=>{
-                    document.querySelectorAll("td").forEach(cell=>{
-                        if(cell.innerHTML==cellText && cell.id!=0){
-                            cell.innerHTML=`<img src="./images/site_icon.jpg">`  
+                    document.querySelectorAll("img").forEach(cell=>{
+                        if(cell.src==cellText && cell.id!=0){
+                            cell.src="./images/site_icon.jpg"
                         }})
-                    cell.innerHTML=`<img src="./images/site_icon.jpg">`     
+                        cell.src="./images/site_icon.jpg" 
                 },500)
-                console.log(cell.innerHTML)
+                console.log(cell.src)
                 console.log(click)
                      
  

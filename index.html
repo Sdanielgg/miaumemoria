@@ -10,22 +10,39 @@
     <div>
         <table>
             <tbody>
-
             </tbody>
         </table>
     </div>
     
 </body>
 <style>
-    table,td{
-        padding: 10px;
+    table{
+        display: flex;
         border: 2px solid black;
     }
     img{
         width: 150px;
         height: 150px;
+        
     }
+    @media (max-width: 600px) {
+    table, td {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    tr{
+        display: flex;
+       justify-content: center;
+       flex-wrap: wrap;
 
+    }
+    img {
+        width: 100px; /* Adjust image size for mobile */
+        height: 100px;
+        margin: 5px;
+        border-radius: 3px;
+    }
+}
 </style>
 <script src="cartasModel.js" type="module"></script>
 <script src="cartasView.js" type="module"></script>
