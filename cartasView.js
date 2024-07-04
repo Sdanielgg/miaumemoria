@@ -32,7 +32,7 @@ loadTable()
 imgClick()
 let click=0
 let cellText
-let plays=0
+let plays=-8
 let modal=document.getElementById("winMessage")
 
 function checkWin(){
@@ -43,15 +43,23 @@ function checkWin(){
         x++
       }
       if(x==8){
+        modal.innerHTML=`       
+        <span>Ganhaste! Foi so preciso falhares ${plays/2} vezes...</span>
+        <button id="close">Close</button>`
         modal.style.display="flex"
+        closeButton()
       }
     })
     console.log(x)
 }
-let closeBtn=document.getElementById("close")
+function closeButton(){
+    let closeBtn=document.getElementById("close")
 closeBtn.addEventListener("click",()=>{
     modal.style.display="none"
 })
+}
+
+
 let restartBtn=document.getElementById("restart")
 restartBtn.addEventListener("click",()=>{
     window.location.reload()
